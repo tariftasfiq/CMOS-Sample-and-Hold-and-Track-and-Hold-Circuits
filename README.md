@@ -197,7 +197,7 @@ Sample-and-Hold and Track-and-Hold circuits are widely used in:
 
 # Author
 
-**Imamul Hossain Rafi**
+**Sheikh Tariful Islam**
 
 Electrical and Electronic Engineering (EEE)  
 Bangladesh University of Engineering and Technology (BUET)
