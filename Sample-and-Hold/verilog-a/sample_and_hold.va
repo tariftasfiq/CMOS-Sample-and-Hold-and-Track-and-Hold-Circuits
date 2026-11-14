@@ -1,0 +1,32 @@
+// VerilogA for adc, sample_and_hold, veriloga
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module sample_and_hold(Vdd, Vss, in, out, clk);
+
+    input Vdd, Vss;
+    input in, clk;
+    output out;
+
+    electrical in, out, clk;
+
+    parameter real clk_vth = 0.5;
+    parameter real delay = 0;
+    parameter real ttime = 1p;
+
+    real v;
+
+    analog begin
+
+        if (V(clk) > clk_vth)
+            v = V(in);  // Tracking phase
+
+        @(cross(V(clk) - clk_vth, -1))
+            v = V(in);  // Sampling phase
+
+        V(out) <+ transition(v, delay, ttime);
+
+    end
+
+endmodule
